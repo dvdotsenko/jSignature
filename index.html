@@ -25,7 +25,12 @@
 	}
 	function InjectCSS(cssbody) {
 	    var styletag = document.createElement('style')
-	    styletag.appendChild(document.createTextNode(cssbody))
+	    styletag.type = 'text/css'
+		if(styletag.styleSheet) {
+			styletag.styleSheet.cssText = cssbody
+		} else {
+			styletag.appendChild(document.createTextNode(cssbody))
+		}
 	    document.getElementsByTagName("head")[0].appendChild(styletag)
 	}
 </script>
